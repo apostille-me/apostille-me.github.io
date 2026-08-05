@@ -1,69 +1,93 @@
 ---
 import '../styles/global.css';
+const year = new Date().getFullYear();
 ---
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="A secure command center for document legalization, certified translations, status evidence, and cross-border filing handoffs." />
+    <meta name="description" content="A secure workspace for coordinating apostilles, certified translations, evidence, deadlines, and cross-border document handoffs." />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://apostille-me.github.io/" />
     <meta property="og:title" content="Apostille Me" />
-    <meta property="og:description" content="Apostille orchestration for expats, families, founders, and immigration teams." />
+    <meta property="og:description" content="Cross-border paperwork without the mystery. Coordinate apostilles, translations, evidence, and handoffs in one clear timeline." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://apostille-me.github.io/" />
+    <meta property="og:site_name" content="Apostille Me" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Apostille Me" />
+    <meta name="twitter:description" content="Cross-border paperwork without the mystery. Coordinate apostilles, translations, evidence, and handoffs in one clear timeline." />
     <meta name="theme-color" content="#7c3aed" />
     <link rel="icon" href="/favicon.svg" />
-    <title>Apostille Me — Apostille orchestration for expats, families, founders, and immigration teams.</title>
+    <title>Apostille Me — Cross-border document workflows, made clear</title>
+    <style is:global>
+      .skip-link { position: fixed; top: 12px; left: 12px; z-index: 100; padding: 10px 14px; border-radius: 999px; background: #fff; color: #05070d; font-weight: 800; transform: translateY(-160%); transition: transform .18s ease; }
+      .skip-link:focus { transform: translateY(0); }
+      :focus-visible { outline: 3px solid var(--accent-2); outline-offset: 4px; }
+      .status-chip { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px; padding: 8px 12px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; background: rgba(255,255,255,.07); color: rgba(248,250,252,.82); font-size: 13px; font-weight: 800; }
+      .status-chip::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 18px var(--accent-2); }
+      .site-footer { display: flex; justify-content: space-between; gap: 24px; align-items: flex-start; padding: 48px 0 12px; color: rgba(226,232,240,.64); font-size: 14px; }
+      .site-footer p { max-width: 720px; margin: 0; font-size: 13px; }
+      .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 14px; font-weight: 750; }
+      .footer-links a:hover { color: #fff; }
+      @media (max-width: 700px) { .site-footer { flex-direction: column; } .footer-links { justify-content: flex-start; } }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+    </style>
   </head>
   <body style="--accent: #7c3aed; --accent-2: #06b6d4;">
-    <main class="page-shell">
+    <a class="skip-link" href="#content">Skip to content</a>
+    <main id="content" class="page-shell">
       <nav class="nav" aria-label="Primary">
-        <a class="brand" href="#top" aria-label="Apostille Me"><span class="brand-mark"></span><span>Apostille Me</span></a>
-        <div class="nav-links"><a href="#platform">Platform</a><a href="#workflow">Workflow</a><a href="#integrations">Integrations</a><a href="#launch" class="nav-cta">Launch</a></div>
+        <a class="brand" href="#top" aria-label="Apostille Me home"><span class="brand-mark" aria-hidden="true"></span><span>Apostille Me</span></a>
+        <div class="nav-links"><a href="#platform">Platform</a><a href="#workflow">Workflow</a><a href="#principles">Principles</a><a href="#contact" class="nav-cta">Early access</a></div>
       </nav>
       <section id="top" class="hero section-grid">
         <div class="hero-copy">
-          <p class="eyebrow">apostille-me · operator-grade software</p>
-          <h1>Apostille orchestration for expats, families, founders, and immigration teams.</h1>
-          <p class="hero-text">A secure command center for document legalization, certified translations, status evidence, and cross-border filing handoffs.</p>
-          <div class="hero-actions"><a class="button primary" href="mailto:hello@apostille-me.com?subject=Start%20a%20document%20chain">Start a document chain</a><a class="button secondary" href="#platform">Audit a filing packet</a></div>
-          <div class="trust-row" aria-label="Proof points"><span>Immigration-ready packet review</span>
-<span>Evidence trail for every handoff</span>
-<span>Customer timeline in plain English</span></div>
+          <span class="status-chip">Early access</span>
+          <p class="eyebrow">Document operations · early access</p>
+          <h1>Cross-border paperwork without the mystery.</h1>
+          <p class="hero-text">Coordinate apostilles, certified translations, receipts, deadlines, and every handoff in one secure, plain-English workspace.</p>
+          <div class="hero-actions"><a class="button primary" href="mailto:hello@apostille-me.com?subject=Apostille%20Me%20early%20access">Request early access</a><a class="button secondary" href="#workflow">See how it works</a></div>
+          <div class="trust-row" aria-label="Product principles"><span>One timeline for every document</span><span>Evidence attached to each handoff</span><span>Clear status for clients and teams</span></div>
         </div>
         <aside class="hero-panel" aria-label="Product snapshot">
           <div class="pulse-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
-          <div class="stat-card"><strong>50-state</strong><span>document routing model</span></div>
-          <div class="signal-list"><p>Designed for</p><h2>expats, immigration lawyers, document runners, remote workers, and families handling multi-jurisdiction paperwork</h2></div>
+          <div class="stat-card"><strong>One chain</strong><span>from intake to delivered packet</span></div>
+          <div class="signal-list"><p>Designed for</p><h2>expats, families, founders, immigration teams, attorneys, translators, and document runners</h2></div>
         </aside>
       </section>
       <section id="platform" class="platform">
-        <div class="section-heading"><p class="eyebrow">Platform</p><h2>Everything needed to move from idea to reliable operation.</h2><p>Each module is designed to stand alone, but the real value shows up when intake, automation, routing, and analytics share one source of truth.</p></div>
-        <div class="feature-grid"><article class="feature-card"><span class="feature-dot"></span><h3>Document chain of custody</h3><p>Track originals, scans, notarizations, state apostilles, federal steps, translations, and delivery windows in one evidence-grade timeline.</p></article>
-<article class="feature-card"><span class="feature-dot"></span><h3>Smart intake</h3><p>Collect signer, jurisdiction, deadline, destination country, and special handling rules before work starts.</p></article>
-<article class="feature-card"><span class="feature-dot"></span><h3>Status evidence vault</h3><p>Store receipts, tracking IDs, clerk notes, PDFs, and reviewer comments with immutable activity history.</p></article>
-<article class="feature-card"><span class="feature-dot"></span><h3>Agent-ready workflows</h3><p>Route work to runners, notaries, translators, and attorneys while keeping customers updated automatically.</p></article></div>
+        <div class="section-heading"><p class="eyebrow">Platform</p><h2>A calmer operating system for complex document chains.</h2><p>Designed to make jurisdiction, ownership, evidence, and next steps visible before a deadline becomes a crisis.</p></div>
+        <div class="feature-grid">
+          <article class="feature-card"><span class="feature-dot"></span><h3>Guided intake</h3><p>Capture document type, issuing jurisdiction, destination country, deadline, signer details, and special handling requirements up front.</p></article>
+          <article class="feature-card"><span class="feature-dot"></span><h3>Chain-of-custody timeline</h3><p>Keep scans, originals, notarizations, state or federal steps, translations, shipments, and reviewer notes tied to one case.</p></article>
+          <article class="feature-card"><span class="feature-dot"></span><h3>Evidence-ready handoffs</h3><p>Attach receipts, tracking numbers, clerk notes, approvals, and delivery confirmations exactly where they belong.</p></article>
+          <article class="feature-card"><span class="feature-dot"></span><h3>Client-safe status</h3><p>Share a concise progress view without exposing internal notes, vendor details, or operational noise.</p></article>
+        </div>
       </section>
       <section id="workflow" class="workflow section-grid">
-        <div><p class="eyebrow">Workflow</p><h2>A clean operating loop for customers and internal teams.</h2><p>Start with a simple request, turn it into a durable system of record, then keep every person and integration in sync.</p></div>
-        <ol class="steps"><li><span>01</span><strong>Capture the document goal</strong></li>
-<li><span>02</span><strong>Verify jurisdiction and destination rules</strong></li>
-<li><span>03</span><strong>Route the apostille packet</strong></li>
-<li><span>04</span><strong>Notify every handoff</strong></li>
-<li><span>05</span><strong>Deliver a complete evidence bundle</strong></li></ol>
+        <div><p class="eyebrow">Workflow</p><h2>From uncertain request to complete evidence bundle.</h2><p>Every case follows a visible sequence, with ownership and proof captured at each transition.</p></div>
+        <ol class="steps">
+          <li><span>01</span><strong>Define the destination and document goal</strong></li>
+          <li><span>02</span><strong>Verify jurisdiction and handling requirements</strong></li>
+          <li><span>03</span><strong>Prepare and route the document packet</strong></li>
+          <li><span>04</span><strong>Record every approval, shipment, and exception</strong></li>
+          <li><span>05</span><strong>Deliver the final packet with its evidence trail</strong></li>
+        </ol>
       </section>
-      <section id="integrations" class="integrations"><div class="section-heading compact"><p class="eyebrow">Integrations</p><h2>Connect the systems that already run the business.</h2></div><div class="integration-marquee"><span>UPS/FedEx tracking</span>
-<span>Google Drive</span>
-<span>Notary queues</span>
-<span>Translation vendors</span>
-<span>Embassy checklists</span>
-<span>Email/SMS updates</span></div></section>
-      <section class="architecture">
-        <div class="arch-card large"><p class="eyebrow">Architecture</p><h2>Astro front-end, edge Worker APIs, and typed client contracts.</h2><p>The repo family is split so marketing can ship independently while clients, libraries, monorepo services, and Cloudflare infrastructure evolve through reviewable pull requests.</p></div>
-        <div class="arch-card"><strong>Astro</strong><span>Static, fast, GitHub Pages-ready.</span></div>
-        <div class="arch-card"><strong>Workers</strong><span>Edge intake, webhooks, alerts, and health probes.</span></div>
-        <div class="arch-card"><strong>SDKs</strong><span>Fetch-first clients with generated language targets.</span></div>
+      <section id="integrations" class="integrations"><div class="section-heading compact"><p class="eyebrow">Ecosystem</p><h2>Meet teams where their work already happens.</h2></div><div class="integration-marquee"><span>UPS &amp; FedEx</span><span>Google Drive</span><span>Email updates</span><span>Translation partners</span><span>Notary workflows</span><span>Embassy checklists</span></div></section>
+      <section id="principles" class="architecture">
+        <div class="arch-card large"><p class="eyebrow">Principles</p><h2>Built for clarity, evidence, and human review.</h2><p>Automation should reduce ambiguity—not conceal it. Apostille Me is designed around inspectable status, explicit ownership, and reviewable handoffs.</p></div>
+        <div class="arch-card"><strong>Clear by default</strong><span>Plain-language milestones make it obvious what is done, what is blocked, and who owns the next move.</span></div>
+        <div class="arch-card"><strong>Evidence travels with work</strong><span>Every receipt, note, approval, and tracking event stays connected to the step it proves.</span></div>
+        <div class="arch-card"><strong>Human judgment stays central</strong><span>Rules and reminders support professionals; they do not pretend every jurisdiction or exception is identical.</span></div>
       </section>
-      <section id="launch" class="launch"><p class="eyebrow">Launch path</p><h2>Ready to turn the org into a real product surface.</h2><p>Push the generated repo family, open the bootstrap PRs, connect Cloudflare secrets, then enable GitHub Pages for this Astro site.</p><a class="button primary" href="mailto:hello@apostille-me.com?subject=Launch%20Apostille%20Me">Open the launch checklist</a></section>
+      <section id="contact" class="launch">
+        <p class="eyebrow">Early access</p><h2>Bring order to your next document chain.</h2><p>Tell us the issuing jurisdiction, destination country, document type, and deadline. We’ll use that context to shape early access and workflow coverage.</p>
+        <div class="hero-actions" style="justify-content:center;"><a class="button primary" href="mailto:hello@apostille-me.com?subject=Apostille%20Me%20early%20access">Request early access</a><a class="button secondary" href="https://github.com/apostille-me" rel="me">Explore the GitHub organization</a></div>
+      </section>
+      <footer class="site-footer"><p>© {year} Apostille Me. Apostille Me is workflow software and does not provide legal advice or government services.</p><div class="footer-links"><a href="https://github.com/apostille-me">GitHub</a><a href="mailto:hello@apostille-me.com">Contact</a><a href="#top">Back to top</a></div></footer>
     </main>
   </body>
 </html>
