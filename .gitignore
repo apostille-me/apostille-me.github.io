@@ -1,5 +1,8 @@
-.DS_Store
+.env
+.env.*
+!.env.example
+target/
 node_modules/
 dist/
-target/
-.env
+.astro/
+coverage/
