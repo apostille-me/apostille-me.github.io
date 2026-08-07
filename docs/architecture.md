@@ -11,3 +11,16 @@
 - `apostille-me-monorepo` coordinates pinned revisions and cross-repository integration checks.
 
 The marketing site may link to versioned public contracts but must not duplicate service logic or become a generic edge proxy. Public copy, accessibility, performance, and stable URLs are product behavior and require review and tests.
+# Architecture
+
+Marketing, documentation, privacy, support, and public service-status content for Apostille.me.
+
+## Fleet
+
+- `apostille-me-libs`
+- `apostille-me-clients`
+- `apostille-me-infra`
+- `apostille-me.github.io`
+- `apostille-me-monorepo`
+
+Interfaces own wire formats; libraries own reusable domain behavior; clients consume versioned contracts; runtimes own deployment behavior; monorepos coordinate pinned revisions. Edge code is allowlisted and never a generic proxy.
