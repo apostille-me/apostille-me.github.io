@@ -1,20 +1,20 @@
 {
-  "dependencies": {
-    "astro": "7.1.4"
-  },
-  "description": "Astro marketing site for Apostille Me.",
-  "engines": {
-    "node": ">=22"
-  },
   "name": "apostille-me-github-io",
-  "packageManager": "npm@10.9.2",
+  "version": "0.1.0",
+  "type": "module",
   "private": true,
+  "description": "Astro marketing site for Apostille Me.",
   "scripts": {
-    "build": "astro build",
     "dev": "astro dev",
+    "build": "astro build && node scripts/verify-built-site.mjs",
     "preview": "astro preview",
     "test": "node --test tests/*.test.mjs"
   },
-  "type": "module",
-  "version": "0.1.0"
+  "dependencies": {
+    "astro": "7.1.4"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "npm@10.9.2"
 }
