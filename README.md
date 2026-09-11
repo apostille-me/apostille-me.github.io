@@ -3,6 +3,7 @@
 Astro marketing site for **Apostille Me**.
 
 - Built with Astro, not Jekyll.
+- The canonical document is `src/pages/index.astro`; only the tested `dist/` artifact is published.
 - Uses GitHub Pages Actions deployment.
 - Includes a responsive landing page, SEO metadata, favicon, proof points, workflow, integrations, architecture, and launch CTA.
 - `public/.nojekyll` is present only to bypass Jekyll processing on Pages; there is no Jekyll site or `_config.yml`.
@@ -10,7 +11,7 @@ Astro marketing site for **Apostille Me**.
 ## Commands
 
 ```bash
-npm install
+npm ci --ignore-scripts
 npm run dev
 npm run build
 npm test

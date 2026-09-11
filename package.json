@@ -10,7 +10,7 @@
   "packageManager": "npm@10.9.2",
   "private": true,
   "scripts": {
-    "build": "astro build",
+    "build": "astro build && node scripts/verify-built-site.mjs",
     "dev": "astro dev",
     "preview": "astro preview",
     "test": "node --test tests/*.test.mjs",

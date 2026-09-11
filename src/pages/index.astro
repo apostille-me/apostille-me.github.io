@@ -1,95 +1,88 @@
----
-import '../styles/global.css';
-import VentureNetwork from '../components/VentureNetwork.astro';
-const year = new Date().getFullYear();
----
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="A secure workspace for coordinating apostilles, certified translations, evidence, deadlines, and cross-border document handoffs." />
-    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Case operations for tracking cross-border document workflows, jurisdictions, appointments, deadlines, and events." />
+    <meta name="theme-color" content="#f5f0e4" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="canonical" href="https://apostille-me.github.io/" />
-    <meta property="og:title" content="Apostille Me" />
-    <meta property="og:description" content="Cross-border paperwork without the mystery. Coordinate apostilles, translations, evidence, and handoffs in one clear timeline." />
+    <meta property="og:title" content="Apostille Me — Move the document, keep the trail" />
+    <meta property="og:description" content="Case operations for tracking cross-border document workflows, jurisdictions, appointments, deadlines, and events." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://apostille-me.github.io/" />
-    <meta property="og:site_name" content="Apostille Me" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Apostille Me" />
-    <meta name="twitter:description" content="Cross-border paperwork without the mystery. Coordinate apostilles, translations, evidence, and handoffs in one clear timeline." />
-    <meta name="theme-color" content="#7c3aed" />
-    <link rel="icon" href="/favicon.svg" />
-    <title>Apostille Me — Cross-border document workflows, made clear</title>
-    <style is:global>
-      .skip-link { position: fixed; top: 12px; left: 12px; z-index: 100; padding: 10px 14px; border-radius: 999px; background: #fff; color: #05070d; font-weight: 800; transform: translateY(-160%); transition: transform .18s ease; }
-      .skip-link:focus { transform: translateY(0); }
-      :focus-visible { outline: 3px solid var(--accent-2); outline-offset: 4px; }
-      .status-chip { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px; padding: 8px 12px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; background: rgba(255,255,255,.07); color: rgba(248,250,252,.82); font-size: 13px; font-weight: 800; }
-      .status-chip::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 18px var(--accent-2); }
-      .site-footer { display: flex; justify-content: space-between; gap: 24px; align-items: flex-start; padding: 48px 0 12px; color: rgba(226,232,240,.64); font-size: 14px; }
-      .site-footer p { max-width: 720px; margin: 0; font-size: 13px; }
-      .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 14px; font-weight: 750; }
-      .footer-links a:hover { color: #fff; }
-      @media (max-width: 700px) { .site-footer { flex-direction: column; } .footer-links { justify-content: flex-start; } }
-      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+    <title>Apostille Me — Move the document, keep the trail</title>
+    <style>
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-width:320px}
+a{color:inherit}
+img,svg{max-width:100%;display:block}
+button,input{font:inherit}
+.skip{position:absolute;left:-9999px;top:0;z-index:1000;padding:.7rem 1rem;background:#fff;color:#000}
+.skip:focus{left:1rem;top:1rem}
+:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+:root{--paper:#f5f0e4;--ink:#1b2940;--red:#a83232;--blue:#315d80;--tan:#d6c7a8;--line:rgba(27,41,64,.42)}
+body{background:#cfc7b6;color:var(--ink);font-family:Georgia,serif}
+.casefile{max-width:1450px;margin:clamp(1rem,3vw,3rem) auto;background:var(--paper);box-shadow:0 20px 60px rgba(40,30,20,.25);position:relative}.casefile:before{content:"CASE / PUBLIC WORKFLOW";position:absolute;right:3rem;top:-1.15rem;background:var(--tan);padding:.5rem 1.4rem .7rem;font:700 .65rem ui-monospace,monospace;letter-spacing:.12em;border:1px solid var(--line);border-bottom:0}
+header{display:grid;grid-template-columns:1fr auto;align-items:center;padding:1.2rem clamp(1rem,4vw,4rem);border-bottom:1px solid var(--line)}.brand{text-decoration:none;font:900 clamp(1.1rem,2vw,1.5rem) Arial,sans-serif;text-transform:uppercase;letter-spacing:.08em}.brand .me{display:inline-block;border:2px solid var(--red);color:var(--red);padding:.1rem .2rem;transform:rotate(-3deg);margin-left:.2rem}nav{display:flex;gap:1.2rem;font:700 .7rem ui-monospace,monospace;text-transform:uppercase}nav a{text-decoration:none}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;border-bottom:1px solid var(--line)}.intro{padding:clamp(3rem,7vw,7rem) clamp(1rem,5vw,5rem);border-right:1px solid var(--line)}.file-no{font:700 .7rem ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}h1{font:900 clamp(4rem,9vw,9rem)/.82 Arial Black,Arial,sans-serif;letter-spacing:-.075em;text-transform:uppercase;margin:1.5rem 0 2rem}.intro>p{font-size:clamp(1.15rem,2vw,1.75rem);line-height:1.45;max-width:32ch}.actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:2rem}.actions a{font:800 .7rem ui-monospace,monospace;text-transform:uppercase;text-decoration:none;padding:.8rem 1rem;border:2px solid var(--ink)}.actions a:first-child{background:var(--ink);color:var(--paper)}
+.route{padding:clamp(2rem,4vw,4rem);background:#e8dfcf}.route h2{font:800 .78rem ui-monospace,monospace;text-transform:uppercase;letter-spacing:.14em;margin:0 0 2rem}.route ol{list-style:none;margin:0;padding:0;counter-reset:stage}.route li{counter-increment:stage;display:grid;grid-template-columns:2.4rem 1fr;gap:1rem;padding:1.3rem 0;border-top:1px solid var(--line);position:relative}.route li:before{content:counter(stage,decimal-leading-zero);font:800 .75rem ui-monospace,monospace;color:var(--red)}.route strong{display:block;font:900 1.1rem Arial,sans-serif;text-transform:uppercase}.route span{display:block;margin-top:.35rem;color:#586272;font-size:.9rem;line-height:1.4}.seal{width:110px;height:110px;border:5px double var(--red);border-radius:50%;display:grid;place-items:center;text-align:center;font:900 .65rem/1.2 ui-monospace,monospace;color:var(--red);transform:rotate(8deg);margin:2rem 0 0 auto}
+.ledger{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}.ledger>section{padding:clamp(2.5rem,5vw,5rem)}.ledger>section:first-child{border-right:1px solid var(--line)}.ledger h2{font:900 clamp(2.5rem,5vw,5.5rem)/.9 Arial Black,Arial,sans-serif;letter-spacing:-.06em;text-transform:uppercase;margin:0 0 2rem}.fields{margin:0}.fields div{display:grid;grid-template-columns:10rem 1fr;padding:1rem 0;border-top:1px solid var(--line)}.fields dt{font:800 .7rem ui-monospace,monospace;text-transform:uppercase}.fields dd{margin:0;line-height:1.45}.warning{background:var(--ink);color:var(--paper)}.warning p{font-size:1.05rem;line-height:1.7}.warning strong{color:#f0b4a8}.warning ul{padding:0;list-style:none}.warning li{padding:.8rem 0;border-top:1px solid rgba(255,255,255,.25);font: .75rem/1.5 ui-monospace,monospace}
+footer{padding:1rem clamp(1rem,4vw,4rem);display:flex;justify-content:space-between;gap:1rem;font:700 .65rem ui-monospace,monospace;text-transform:uppercase;color:#596477}
+@media(max-width:850px){.casefile{margin:0}.casefile:before{display:none}.hero,.ledger{grid-template-columns:1fr}.intro,.ledger>section:first-child{border-right:0;border-bottom:1px solid var(--line)}nav{display:none}.fields div{grid-template-columns:1fr;gap:.35rem}}
+
     </style>
   </head>
-  <body style="--accent: #7c3aed; --accent-2: #06b6d4;">
-    <a class="skip-link" href="#content">Skip to content</a>
-    <main id="content" class="page-shell">
-      <nav class="nav" aria-label="Primary">
-        <a class="brand" href="#top" aria-label="Apostille Me home"><span class="brand-mark" aria-hidden="true"></span><span>Apostille Me</span></a>
-        <div class="nav-links"><a href="#platform">Platform</a><a href="#workflow">Workflow</a><a href="#principles">Principles</a><a href="#network">Network</a><a href="#contact" class="nav-cta">Early access</a></div>
-      </nav>
-      <section id="top" class="hero section-grid">
-        <div class="hero-copy">
-          <span class="status-chip">Early access</span>
-          <p class="eyebrow">Document operations · early access</p>
-          <h1>Cross-border paperwork without the mystery.</h1>
-          <p class="hero-text">Coordinate apostilles, certified translations, receipts, deadlines, and every handoff in one secure, plain-English workspace.</p>
-          <div class="hero-actions"><a class="button primary" href="mailto:hello@apostille-me.com?subject=Apostille%20Me%20early%20access">Request early access</a><a class="button secondary" href="#workflow">See how it works</a></div>
-          <div class="trust-row" aria-label="Product principles"><span>One timeline for every document</span><span>Evidence attached to each handoff</span><span>Clear status for clients and teams</span></div>
-        </div>
-        <aside class="hero-panel" aria-label="Product snapshot">
-          <div class="pulse-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
-          <div class="stat-card"><strong>One chain</strong><span>from intake to delivered packet</span></div>
-          <div class="signal-list"><p>Designed for</p><h2>expats, families, founders, immigration teams, attorneys, translators, and document runners</h2></div>
-        </aside>
-      </section>
-      <section id="platform" class="platform">
-        <div class="section-heading"><p class="eyebrow">Platform</p><h2>A calmer operating system for complex document chains.</h2><p>Designed to make jurisdiction, ownership, evidence, and next steps visible before a deadline becomes a crisis.</p></div>
-        <div class="feature-grid">
-          <article class="feature-card"><span class="feature-dot"></span><h3>Guided intake</h3><p>Capture document type, issuing jurisdiction, destination country, deadline, signer details, and special handling requirements up front.</p></article>
-          <article class="feature-card"><span class="feature-dot"></span><h3>Chain-of-custody timeline</h3><p>Keep scans, originals, notarizations, state or federal steps, translations, shipments, and reviewer notes tied to one case.</p></article>
-          <article class="feature-card"><span class="feature-dot"></span><h3>Evidence-ready handoffs</h3><p>Attach receipts, tracking numbers, clerk notes, approvals, and delivery confirmations exactly where they belong.</p></article>
-          <article class="feature-card"><span class="feature-dot"></span><h3>Client-safe status</h3><p>Share a concise progress view without exposing internal notes, vendor details, or operational noise.</p></article>
-        </div>
-      </section>
-      <section id="workflow" class="workflow section-grid">
-        <div><p class="eyebrow">Workflow</p><h2>From uncertain request to complete evidence bundle.</h2><p>Every case follows a visible sequence, with ownership and proof captured at each transition.</p></div>
-        <ol class="steps">
-          <li><span>01</span><strong>Define the destination and document goal</strong></li>
-          <li><span>02</span><strong>Verify jurisdiction and handling requirements</strong></li>
-          <li><span>03</span><strong>Prepare and route the document packet</strong></li>
-          <li><span>04</span><strong>Record every approval, shipment, and exception</strong></li>
-          <li><span>05</span><strong>Deliver the final packet with its evidence trail</strong></li>
-        </ol>
-      </section>
-      <section id="integrations" class="integrations"><div class="section-heading compact"><p class="eyebrow">Ecosystem</p><h2>Meet teams where their work already happens.</h2></div><div class="integration-marquee"><span>UPS &amp; FedEx</span><span>Google Drive</span><span>Email updates</span><span>Translation partners</span><span>Notary workflows</span><span>Embassy checklists</span></div></section>
-      <section id="principles" class="architecture">
-        <div class="arch-card large"><p class="eyebrow">Principles</p><h2>Built for clarity, evidence, and human review.</h2><p>Automation should reduce ambiguity—not conceal it. Apostille Me is designed around inspectable status, explicit ownership, and reviewable handoffs.</p></div>
-        <div class="arch-card"><strong>Clear by default</strong><span>Plain-language milestones make it obvious what is done, what is blocked, and who owns the next move.</span></div>
-        <div class="arch-card"><strong>Evidence travels with work</strong><span>Every receipt, note, approval, and tracking event stays connected to the step it proves.</span></div>
-        <div class="arch-card"><strong>Human judgment stays central</strong><span>Rules and reminders support professionals; they do not pretend every jurisdiction or exception is identical.</span></div>
-      </section>
-      <VentureNetwork current="apostille-me" />
-      <section id="contact" class="launch">
-        <p class="eyebrow">Early access</p><h2>Bring order to your next document chain.</h2><p>Tell us the issuing jurisdiction, destination country, document type, and deadline. We’ll use that context to shape early access and workflow coverage.</p>
-        <div class="hero-actions" style="justify-content:center;"><a class="button primary" href="mailto:hello@apostille-me.com?subject=Apostille%20Me%20early%20access">Request early access</a><a class="button secondary" href="https://github.com/apostille-me" rel="me">Explore the GitHub organization</a></div>
-      </section>
-      <footer class="site-footer"><p>© {year} Apostille Me. Apostille Me is workflow software and does not provide legal advice or government services.</p><div class="footer-links"><a href="https://github.com/apostille-me">GitHub</a><a href="mailto:hello@apostille-me.com">Contact</a><a href="#top">Back to top</a></div></footer>
-    </main>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+
+    <div class="casefile"><header class="fleet-nav-enhanced"><a class="brand" href="#top">Apostille <span class="me">Me</span></a><nav class="fleet-desktop-nav" aria-label="Primary"><a href="#route">Route</a><a href="#case">Case record</a><a href="https://github.com/apostille-me">Source</a><a href="#access">Access</a><a href="https://user.apostille-me.github.io/">Log in</a><a href="https://auth.apostille-me.github.io/">Sign up</a></nav><details class="fleet-mobile-nav"><summary>Menu</summary><nav aria-label="Mobile navigation"><a href="#access">Access</a><a href="https://user.apostille-me.github.io/">User log in</a><a href="https://org.apostille-me.github.io/">Organization access</a><a href="https://auth.apostille-me.github.io/">Sign up</a><a href="https://github.com/apostille-me">Source</a></nav></details></header>
+      <main id="content"><section class="hero" id="top"><div class="intro"><span class="file-no">File 2026 / cross-border document operations</span><h1>Move the document. Keep the trail.</h1><p>Track what a document is, where it was issued, where it must be used, and which verified step comes next—without turning the case into a maze of email attachments.</p><div class="actions"><a href="https://github.com/apostille-me/apme-api">Inspect case operations</a><a href="https://github.com/apostille-me/apostille-me.github.io">Site source</a></div></div>
+        <aside class="route" id="route"><h2>Illustrative document route</h2><ol><li><div><strong>Issued</strong><span>Identify the document authority, copy type, signature, seal, and date.</span></div></li><li><div><strong>Certified</strong><span>Confirm whether notarization or a certified copy is required before authentication.</span></div></li><li><div><strong>Apostilled</strong><span>Route to the competent authority and record submission, receipt, and reference.</span></div></li><li><div><strong>Translated</strong><span>Attach translation requirements to the destination, not to a generic checklist.</span></div></li><li><div><strong>Delivered</strong><span>Record the handoff, deadline, next appointment, and the evidence returned.</span></div></li></ol><div class="seal">STATUS<br/>TRACEABLE<br/>NOT LEGAL<br/>ADVICE</div></aside></section>
+        <div class="ledger" id="case"><section><h2>A case is a sequence of facts.</h2><dl class="fields"><div><dt>Client reference</dt><dd>Sanitized identifier; identity documents stay outside public logs and demo data.</dd></div><div><dt>Document</dt><dd>Type, issuing authority, jurisdiction, copy requirements, and safe metadata.</dd></div><div><dt>Destination</dt><dd>Where the document will be used and which rules need professional confirmation.</dd></div><div><dt>Clock</dt><dd>Appointments, deadlines, expected returns, and overdue steps.</dd></div><div><dt>History</dt><dd>Case events, status transitions, notes, and an auditable operational trail.</dd></div></dl></section>
+          <section class="warning"><h2>Operational clarity is not legal advice.</h2><p><strong>Apostille Me is case-workflow software.</strong> Requirements vary by document, authority, destination, timing, and professional interpretation.</p><ul><li>Do not place passports, identity scans, private keys, or sensitive case files in logs.</li><li>Production use requires encryption, tenant isolation, access controls, retention policy, backups, and auditability.</li><li>Jurisdiction-specific decisions require qualified professional review.</li></ul></section></div>
+<section class="fleet-access" id="access" aria-labelledby="fleet-access-title"><div class="fleet-access-head"><p class="fleet-access-kicker">Product access</p><h2 id="fleet-access-title">Public context here. Account work in the right application.</h2><p class="fleet-access-intro">Apostille Me's marketing site remains public. Authenticated case preparation and document coordination is separated into individual, organization, and account-creation boundaries.</p></div><div class="fleet-access-grid"><article><span>INDIVIDUAL</span><h3>Your workspace</h3><p>Return to personal activity, saved context, and work owned by your account.</p><a href="https://user.apostille-me.github.io/">User log in ↗</a></article><article><span>ORGANIZATION</span><h3>Team operations</h3><p>Open shared membership, policy, and organization-scoped work.</p><a href="https://org.apostille-me.github.io/">Organization access ↗</a></article><article><span>SHARED AUTH</span><h3>Create an account</h3><p>Start through the dedicated authentication boundary before entering the product.</p><a href="https://auth.apostille-me.github.io/">Sign up ↗</a></article></div></section>
+</main>
+      <footer><span>Case operations for visa and apostille consulting</span><span>Privacy and jurisdiction first</span></footer></div>
+
+
   </body>
 </html>
+
+<style>
+  .fleet-nav-enhanced { position: sticky !important; top: 0; z-index: 200; isolation: isolate; }
+  .fleet-mobile-nav { display: none; position: relative; margin-left: auto; }
+  .fleet-mobile-nav summary { cursor: pointer; list-style: none; padding: .62rem .8rem; border: 1px solid currentColor; border-radius: .45rem; font: 700 .72rem/1 system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+  .fleet-mobile-nav summary::-webkit-details-marker { display: none; }
+  .fleet-mobile-nav nav { position: absolute; right: 0; top: calc(100% + .55rem); min-width: 15rem; display: grid; gap: .25rem; padding: .75rem; background: #111827; color: #fff; border: 1px solid rgba(255,255,255,.18); box-shadow: 0 1.4rem 3rem rgba(0,0,0,.3); }
+  .fleet-mobile-nav a { padding: .7rem .8rem; color: inherit; text-decoration: none; }
+  @media (max-width: 760px) {
+    .fleet-desktop-nav { display: none !important; }
+    .fleet-mobile-nav { display: block; }
+  }
+</style>
+
+<style>
+  .fleet-access { padding: clamp(3.5rem, 8vw, 7rem) max(4vw, calc((100% - 76rem) / 2)); border-block: 1px solid currentColor; }
+  .fleet-access-head { max-width: 48rem; }
+  .fleet-access-kicker { margin: 0 0 .8rem; font: 750 .72rem/1.4 ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
+  .fleet-access h2 { margin: 0; font-size: clamp(2rem, 4vw, 4rem); line-height: 1.02; letter-spacing: -.04em; text-wrap: balance; }
+  .fleet-access-intro { max-width: 46rem; margin: 1.25rem 0 0; font-size: 1.05rem; line-height: 1.7; opacity: .78; }
+  .fleet-access-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
+  .fleet-access-grid article { padding: 1.5rem; border: 1px solid currentColor; border-radius: .8rem; }
+  .fleet-access-grid span { font: 750 .68rem/1 ui-monospace, monospace; letter-spacing: .1em; opacity: .66; }
+  .fleet-access-grid h3 { margin: 1.5rem 0 .65rem; font-size: 1.15rem; }
+  .fleet-access-grid p { min-height: 4.8rem; margin: 0 0 1.25rem; line-height: 1.55; opacity: .76; }
+  .fleet-access-grid a { font-weight: 750; color: inherit; text-underline-offset: .25rem; }
+  @media (max-width: 760px) {
+    .fleet-access-grid { grid-template-columns: 1fr; }
+    .fleet-access-grid p { min-height: 0; }
+  }
+</style>
